@@ -1,51 +1,52 @@
 <!--
-  <<< Author notes: Step 1 >>>
-  Choose 3-5 steps for your course.
-  The first step is always the hardest, so pick something easy!
-  Link to docs.github.com for further explanations.
-  Encourage users to open new tabs for steps!
+  <<< 作者备注：步骤 1 >>>
+  为你的课程选择 3–5 个步骤。
+  第一步通常是最难的，所以选一个简单的开始吧！
+  链接到 docs.github.com 以获取进一步说明。
+  鼓励用户为步骤打开新的浏览器标签页！
 -->
 
-## Step 1: Add headers
+## 步骤 1：添加标题
 
-_Welcome to "Communicate using Markdown"! :wave:_
+_欢迎来到《使用 Markdown 进行沟通》！:wave:_
 
-**What is _Markdown_?** Markdown is a [lightweight syntax](https://docs.github.com/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax) for communicating on GitHub. You can format text to add a heading, lists, **bold**, _italics_, tables, and many other stylings. You can use Markdown in most places around GitHub:
+**什么是 _Markdown_？** Markdown 是一种用于在 GitHub 上进行交流的轻量级语法。
+你可以使用它来格式化文本，例如添加标题、列表、**加粗**、_斜体_、表格以及许多其他样式。
 
-- Comments on [issues](https://docs.github.com/issues/tracking-your-work-with-issues/about-issues), [pull requests](https://docs.github.com/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/about-pull-requests), and [discussions](https://docs.github.com/discussions/collaborating-with-your-community-using-discussions/about-discussions)
-- Files with the `.md` or `.markdown` extension
-- Sharing snippets of text in [Gists](https://docs.github.com/github/writing-on-github/editing-and-sharing-content-with-gists/creating-gists)
+- 议题（issues）中的评论
+- 拉取请求（pull requests）中的评论
+- 讨论（discussions）中的评论
+- 以 .md 或 .markdown 结尾的文件
+- 在 Gists 中分享文本片段
 
-**What is a _header_?** A header is a larger bit of text at the beginning of a section. There are six sizes.
+**什么是 _标题_？**  
+标题是位于某一部分开头的一段较大的文本。标题一共有六种大小。
 
-### Example
+### 示例
 
 ```md
-# This is an `<h1>` header, which is the largest
+# 这是一个 `<h1>` 标题，它是最大的
 
-## This is an `<h2>` header
+## 这是一个 `<h2>` 标题
 
-###### This is an `<h6>` header, which is the smallest
+###### 这是一个 `<h6>` 标题，它是最小的
 ```
 
-#### How it looks
+### 显示效果（示意）
 
-# This is an `<h1>` header, which is the largest
+# 这是一个 `<h1>` 标题，它是最大的
+## 这是一个 `<h2>` 标题
+###### 这是一个 `<h6>` 标题，它是最小的
 
-## This is an `<h2>` header
+### :keyboard: 活动：使用标题编辑你的文件
 
-###### This is an `<h6>` header, which is the smallest
-
-### :keyboard: Activity: Edit your file with headers
-
-1. Open a new browser tab, and work on the steps in your second tab while you read the instructions in this tab.
-1. Open the **pull requests** tab.
-1. Click **New pull request**, for the branches to compare, select `base: main` and `compare: start-markdown`.
-1. Click **Create pull request**.
-1. In this pull request, go to the **Files changed** tab. We made an empty file `index.md` for you.
-1. Select **Edit file** from the three dotted **...** menu in the upper right corner of the file view on `index.md`.
-1. On the **Edit file** tab, add a `#`, followed by a **space**, before any content you like to make it an H1 Header. You can add more headers, using one to six `#` characters followed by a **space**.
-1. Above your new content, click **Preview**.
-1. At the bottom of the page, type a short, meaningful commit message that describes the change you made to the file.
-1. Click **Commit changes**.
-1. Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
+1. 打开一个新的浏览器标签页，在第二个标签页中按照步骤操作，同时在当前标签页中阅读说明。
+2. 打开 pull requests 标签页。
+3. 点击 New pull request，选择 base: main 和 compare: start-markdown。
+4. 点击 Create pull request。
+5. 前往 Files changed 标签页，找到 index.md。
+6. 点击右上角 ... → Edit file。
+7. 在任意内容前添加 `# `（井号 + 空格）创建 H1 标题。
+8. 点击 Preview。
+9. 输入提交说明。
+10. 点击 Commit changes。
