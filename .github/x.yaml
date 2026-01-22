@@ -1,5 +1,5 @@
 # ---------------------------------------------------
-# 基础配置与 DNS 优化 (解决 DNS 污染)
+# 基础配置与 DNS 优化
 # ---------------------------------------------------
 mixed-port: 7890
 allow-lan: true
@@ -21,52 +21,53 @@ dns:
     - https://8.8.8.8/dns-query
 
 # ---------------------------------------------------
-# 节点配置 (已更新为 KR 节点)
+# 节点配置 (保留 VPS 1，用 KR 替换 机场4)
 # ---------------------------------------------------
 proxies:
+  - name: "Trojan_TLS-gt90pyqe"
+    type: trojan
+    server: vps.epochtx.me
+    port: 443
+    password: ruZVMvaL87
+    udp: true
+    sni: vps.epochtx.me
+    alpn: [h2, http/1.1]
+    client-fingerprint: chrome
+    skip-cert-verify: false
+
   - name: "torjankr-r5aqq98e"
     type: trojan
     server: kr.epochtx.me
     port: 443
-    password: 3wtKBxqaGH #
+    password: 3wtKBxqaGH
     udp: true
-    sni: kr.epochtx.me #
+    sni: kr.epochtx.me
     alpn: [h2, http/1.1]
-    client-fingerprint: chrome #
+    client-fingerprint: chrome
     skip-cert-verify: false
 
-  - name: "机场4-节点"
-    type: trojan
-    server: vpn.epochtx.tech
-    port: 443
-    password: TtCZjUurKb
-    udp: true
-    sni: vpn.epochtx.tech
-    skip-cert-verify: true
-    alpn: [h2, http/1.1]
-
 # ---------------------------------------------------
-# 策略组配置
+# 策略组配置 (已同步更新节点列表)
 # ---------------------------------------------------
 proxy-groups:
   - name: 节点选择
     type: select
     proxies:
       - torjankr-r5aqq98e
-      - 机场4-节点
+      - Trojan_TLS-gt90pyqe
       - DIRECT
 
   - name: 智能助理
     type: select
-    proxies: [节点选择, torjankr-r5aqq98e, 机场4-节点]
+    proxies: [节点选择, torjankr-r5aqq98e, Trojan_TLS-gt90pyqe]
 
   - name: AppleAI
     type: select
-    proxies: [节点选择, torjankr-r5aqq98e, 机场4-节点, DIRECT]
+    proxies: [节点选择, torjankr-r5aqq98e, Trojan_TLS-gt90pyqe, DIRECT]
 
   - name: TikTok
     type: select
-    proxies: [节点选择, torjankr-r5aqq98e, 机场4-节点]
+    proxies: [节点选择, torjankr-r5aqq98e, Trojan_TLS-gt90pyqe]
 
   - name: 国内媒体
     type: select
@@ -74,19 +75,19 @@ proxy-groups:
 
   - name: 电报信息
     type: select
-    proxies: [节点选择, torjankr-r5aqq98e, 机场4-节点]
+    proxies: [节点选择, torjankr-r5aqq98e, Trojan_TLS-gt90pyqe]
 
   - name: Instagram
     type: select
-    proxies: [节点选择, torjankr-r5aqq98e, 机场4-节点]
+    proxies: [节点选择, torjankr-r5aqq98e, Trojan_TLS-gt90pyqe]
 
   - name: Line
     type: select
-    proxies: [节点选择, torjankr-r5aqq98e, 机场4-节点]
+    proxies: [节点选择, torjankr-r5aqq98e, Trojan_TLS-gt90pyqe]
 
   - name: 谷歌服务
     type: select
-    proxies: [节点选择, torjankr-r5aqq98e, 机场4-节点]
+    proxies: [节点选择, torjankr-r5aqq98e, Trojan_TLS-gt90pyqe]
 
   - name: 游戏平台
     type: select
@@ -94,22 +95,22 @@ proxy-groups:
 
   - name: 油管视频
     type: select
-    proxies: [节点选择, torjankr-r5aqq98e, 机场4-节点]
+    proxies: [节点选择, torjankr-r5aqq98e, Trojan_TLS-gt90pyqe]
 
   - name: 奈飞视频
     type: select
-    proxies: [节点选择, torjankr-r5aqq98e, 机场4-节点]
+    proxies: [节点选择, torjankr-r5aqq98e, Trojan_TLS-gt90pyqe]
 
   - name: 迪士尼+
     type: select
-    proxies: [节点选择, torjankr-r5aqq98e, 机场4-节点]
+    proxies: [节点选择, torjankr-r5aqq98e, Trojan_TLS-gt90pyqe]
 
   - name: 哔哩哔哩
     type: select
     proxies: [DIRECT, 节点选择]
 
 # ---------------------------------------------------
-# 规则集 (已修正语法错误)
+# 规则集 (Rule Providers)
 # ---------------------------------------------------
 rule-providers:
   DouYin:
@@ -222,14 +223,14 @@ rule-providers:
     interval: 86400
 
 # ---------------------------------------------------
-# 规则逻辑 (由上至下匹配)
+# 规则逻辑
 # ---------------------------------------------------
 rules:
-  # 基础直连
-  - DOMAIN-SUFFIX,kr.epochtx.me,DIRECT # 面板直连
-  - RULE-SET,ChinaMax,DIRECT
+  # 域名直连
+  - DOMAIN-SUFFIX,kr.epochtx.me,DIRECT
+  - DOMAIN-SUFFIX,vps.epochtx.me,DIRECT
   
-  # 特定服务走特定组
+  - RULE-SET,ChinaMax,DIRECT
   - RULE-SET,DouYin,国内媒体
   - RULE-SET,XiaoHongShu,国内媒体
   - RULE-SET,OpenAI,智能助理
@@ -248,17 +249,12 @@ rules:
   - RULE-SET,Disney,迪士尼+
   - RULE-SET,BiliBili,哔哩哔哩
   
-  # 广告/追踪屏蔽
+  # 广告屏蔽
   - DOMAIN-SUFFIX,applovin.com,REJECT
-  - DOMAIN-SUFFIX,applvn.com,REJECT
-  - DOMAIN-SUFFIX,smadex.com,REJECT
   - DOMAIN-SUFFIX,axon.ai,REJECT
   - DOMAIN-SUFFIX,appsflyer.com,REJECT
-  - DOMAIN-SUFFIX,adjust.com,REJECT
 
-  # 局域网与国内 GEO 分流
+  # 兜底
   - GEOIP,LAN,DIRECT
   - GEOIP,CN,DIRECT
-  
-  # 最终兜底
   - MATCH,节点选择
