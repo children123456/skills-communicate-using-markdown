@@ -65,6 +65,14 @@ _Welcome to "Communicate using Markdown"! :wave:_
 1. Click **Commit changes**.
 1. Wait about 20 seconds then refresh this page (the one you're following instructions from). [GitHub Actions](https://docs.github.com/en/actions) will automatically update to the next step.
 
+## Practice example: linked image badge
+
+A badge is also Markdown: an image can be wrapped in a link so clicking the rendered badge opens another page.
+
+[![Powered by RustChain](https://img.shields.io/badge/Powered%20by-RustChain-orange)](https://rustchain.org)
+
+_Disclosure: this linked-image example was added while participating in an RTC-compensated RustChain README bounty._
+
 <footer>
 
 <!--
